@@ -23,8 +23,8 @@ Just run the main file and make sure to have the empty word file with it.
 # Gmail
 Gmail can sniff out whatever or not you use a chrome driver so it won't work it unfournatley although the list generator will still work regardless so do with that as you will.
 # Visual Studio Code
-Best option in my opinion since you can just download the modules. This is what I use for this program
+Best option in my opinion since you can just download the modules. This is what I use for this program and make sure to get the python module and selenium.
 # Replit
-Don't use this, it can't handle the data
+Don't use this, it can't handle the data and it's linux based which means chromedriver doesn't like.
 # Beeg Beeg Yoshi!
 [Beeg Beeg Yoshi Orginal](https://github.com/24khale/BruteForceEducational/assets/126002322/174afd49-c467-4997-b83e-7b2f7bdde625)
