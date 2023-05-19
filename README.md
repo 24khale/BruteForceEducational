@@ -28,3 +28,5 @@ Best option in my opinion since you can just download the modules. This is what 
 Don't use this, it can't handle the data and it's linux based which means chromedriver doesn't like.
 # Beeg Beeg Yoshi!
 [Beeg Beeg Yoshi Orginal](https://github.com/24khale/BruteForceEducational/assets/126002322/174afd49-c467-4997-b83e-7b2f7bdde625)
+# OUTLOOK WARNING
+It will tempory lock the account if you use this too much. be warned. although a way around it is to find the last place where it stopped and then continue from that point but you have to install the code to get the last password.
